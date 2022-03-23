@@ -13,10 +13,9 @@
     
     function displayNumbers(event){
         let buttonValue = event.target.value;
-        console.log(buttonValue);
         result += buttonValue;
         display.textContent = +result;
-    }
+    };
 
     function operator(event){
         let buttonValue = event.target.value;
@@ -24,17 +23,16 @@
         console.log(inputs);
         if (buttonValue === "="){
             // calculate values 
-            console.log(inputs);
-            display.textContent = operate(inputs);
+            display.textContent = Math.round(operate(inputs));
+            resetCalculator();
             return;
         } else if (buttonValue === "C"){
             // clear inputs 
-            inputs = [];
-            result = 0;
+            resetCalculator();
             display.textContent = result;
             return;
         } else if (inputs[2]){
-            display.textContent = operate(inputs); 
+            display.textContent = Math.round(operate(inputs)); 
         } else if (!inputs[1]){
             // add operator
             inputs.push(buttonValue);
@@ -44,41 +42,39 @@
             inputs[1] = buttonValue;
         }
         result = 0;
-    }
+    };
 
     function operate(values){
-        let output = 0;
-        if (values[1] === "+"){
-            output = add(values[0], values[2]);
-            values = [output];
-            return output;
+        if (!values[1]){
+            return values[0];
+        } else if (values[1] === "+"){
+            return values = [add(values[0], values[2])][0];
         } else if (values[1] === "-"){
-            output = subtract(values[0], values[2]);
-            values = [output];
-            return output;
+            return values = [subtract(values[0], values[2])][0];
         } else if (values[1] === "*"){
-            output = multiply(values[0], values[2]);
-            values = [output];
-            return output;
+            return values = [multiply(values[0], values[2])][0];
         } else if (values[1] === "/"){
-            output = divide(values[0], values[2]);
-            values = [output];
-            return output;
+            return values = [divide(values[0], values[2])][0];
         }
-    }
+    };
     function add(op1, op2){
         return op1 + op2;
-    }
+    };
 
     function subtract(op1, op2){
         return op1 - op2;
-    }
+    };
     
     function divide(op1, op2){
-        return op1 / op2;
-    }
+        return op2 === 0 ? "ERROR: ZERO DIVISION" : op1 / op2;
+    };
 
     function multiply(op1, op2){
         return op1 * op2;
-    }
+    };
+
+    function resetCalculator(){
+        result = 0;
+        inputs = [];
+    };
 })(window, document);
