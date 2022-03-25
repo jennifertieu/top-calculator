@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: 2px solid red;
 }
 
 body {
@@ -13,10 +12,16 @@ body {
 }
 
 .display {
+    font-size: 2remgit ;
+    background-color: white;
     height: 10%;
+    text-align: right;
+    border: 1px solid black;
 }
 
 .container {
+    border: 2px solid black; 
+    background-color: gray;
     height: 70%;
     width: 30%;
     display: flex;
@@ -36,4 +41,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
+}
+
+.button:hover {
+    background-color: lightgray;
 }
