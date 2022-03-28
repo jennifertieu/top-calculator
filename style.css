@@ -12,10 +12,12 @@ body {
 }
 
 .display {
-    font-size: 2remgit ;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 2rem;
     background-color: white;
     height: 10%;
-    text-align: right;
     border: 1px solid black;
 }
 

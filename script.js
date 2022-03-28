@@ -2,11 +2,11 @@
     "use strict";
     let result = 0;
     let inputs = [];
-    const display = document.querySelector(".display");   
-    display.textContent = +result;
+    const displayText = document.querySelector(".display-text");   
+    displayText.textContent = +result;
 
     const buttonOperand = document.querySelectorAll(".button-operand");
-    buttonOperand.forEach((button) => button.addEventListener("click", displayNumbers));
+    buttonOperand.forEach((button) => button.addEventListener("click", displayTextNumbers));
 
     const buttonOperator = document.querySelectorAll(".button-operator");
     buttonOperator.forEach((button) => button.addEventListener("click", operator));
@@ -14,7 +14,7 @@
     function displayNumbers(event){
         let buttonValue = event.target.value;
         result += buttonValue;
-        display.textContent = +result;
+        displayText.textContent = +result;
     };
 
     function operator(event){
@@ -23,16 +23,16 @@
         console.log(inputs);
         if (buttonValue === "="){
             // calculate values 
-            display.textContent = Math.round(operate(inputs));
+            displayText.textContent = Math.round(operate(inputs));
             resetCalculator();
             return;
         } else if (buttonValue === "C"){
             // clear inputs 
             resetCalculator();
-            display.textContent = result;
+            displayText.textContent = result;
             return;
         } else if (inputs[2]){
-            display.textContent = Math.round(operate(inputs)); 
+            displayText.textContent = Math.round(operate(inputs)); 
         } else if (!inputs[1]){
             // add operator
             inputs.push(buttonValue);
