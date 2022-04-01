@@ -6,7 +6,7 @@
     displayText.textContent = +result;
 
     const buttonOperand = document.querySelectorAll(".button-operand");
-    buttonOperand.forEach((button) => button.addEventListener("click", displayTextNumbers));
+    buttonOperand.forEach((button) => button.addEventListener("click", displayNumbers));
 
     const buttonOperator = document.querySelectorAll(".button-operator");
     buttonOperator.forEach((button) => button.addEventListener("click", operator));
