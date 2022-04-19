@@ -73,7 +73,7 @@
             return inputs[0];
         } else if (values[1] === "/"){
             inputs = [divide(values[0], values[2])];
-            return inputs = [divide(values[0], values[2])][0];
+            return inputs[0];
         }
     };
     function add(op1, op2){
