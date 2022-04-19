@@ -18,44 +18,39 @@
     };
 
     function operator(event){
-        console.log("operator event", inputs);
-
         let buttonValue = event.target.value;
         // if first input, push result first
         if (!inputs[0]) inputs.push(+result);
-        // if chained calculation, add input after operator
 
-        // if no operator, add
+        // if no operator, add operator
         if(!inputs[1]) {
             inputs.push(buttonValue);
         } else {
-            // operator exists, add
+            // operator exists, add operand first
             inputs.push(+result)
         }
 
-        console.log("pushed result", inputs);
+        
         if (buttonValue === "="){
             // calculate values 
             displayText.textContent = Math.round(calculate(inputs));
-            console.log("equals", inputs);
         } else if (buttonValue === "C"){
             // clear inputs 
             resetCalculator();
             displayText.textContent = result;
             return;
         } else if (inputs.length === 3){
-            console.log("Calculated value", calculate(inputs));
-            console.log("inputs", inputs);
-            // calculate values if two numbers and operator are present
+            // calculate values if two numbers and operator are already present
             displayText.textContent = Math.round(calculate(inputs)); 
+            // add operator 
             inputs.push(buttonValue);
         } else if (inputs[1]) {
+            // replace operator
             inputs[1] = buttonValue
         };
 
         // reset result to display
         result = 0;
-        console.log(inputs);
     };
 
     function calculate(values){
