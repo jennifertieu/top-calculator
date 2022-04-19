@@ -18,43 +18,62 @@
     };
 
     function operator(event){
+        console.log("operator event", inputs);
+
         let buttonValue = event.target.value;
-        inputs.push(+result);
-        console.log(inputs);
+        // if first input, push result first
+        if (!inputs[0]) inputs.push(+result);
+        // if chained calculation, add input after operator
+
+        // if no operator, add
+        if(!inputs[1]) {
+            inputs.push(buttonValue);
+        } else {
+            // operator exists, add
+            inputs.push(+result)
+        }
+
+        console.log("pushed result", inputs);
         if (buttonValue === "="){
             // calculate values 
-            displayText.textContent = Math.round(operate(inputs));
-            resetCalculator();
-            return;
+            displayText.textContent = Math.round(calculate(inputs));
+            console.log("equals", inputs);
         } else if (buttonValue === "C"){
             // clear inputs 
             resetCalculator();
             displayText.textContent = result;
             return;
-        } else if (inputs[2]){
-            displayText.textContent = Math.round(operate(inputs)); 
-        } else if (!inputs[1]){
-            // add operator
+        } else if (inputs.length === 3){
+            console.log("Calculated value", calculate(inputs));
+            console.log("inputs", inputs);
+            // calculate values if two numbers and operator are present
+            displayText.textContent = Math.round(calculate(inputs)); 
             inputs.push(buttonValue);
-            console.log(inputs);
-        } else {
-            // replace operator if the user presses it again
-            inputs[1] = buttonValue;
-        }
+        } else if (inputs[1]) {
+            inputs[1] = buttonValue
+        };
+
+        // reset result to display
         result = 0;
+        console.log(inputs);
     };
 
-    function operate(values){
-        if (!values[1]){
+    function calculate(values){
+        // no operator
+        if (!values[1] || !values[2]){
             return values[0];
         } else if (values[1] === "+"){
-            return values = [add(values[0], values[2])][0];
+            inputs = [add(values[0], values[2])];
+            return inputs[0];
         } else if (values[1] === "-"){
-            return values = [subtract(values[0], values[2])][0];
+            inputs = [subtract(values[0], values[2])]; 
+            return inputs[0];
         } else if (values[1] === "*"){
-            return values = [multiply(values[0], values[2])][0];
+            inputs = [multiply(values[0], values[2])];
+            return inputs[0];
         } else if (values[1] === "/"){
-            return values = [divide(values[0], values[2])][0];
+            inputs = [divide(values[0], values[2])];
+            return inputs = [divide(values[0], values[2])][0];
         }
     };
     function add(op1, op2){
