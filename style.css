@@ -19,11 +19,13 @@ body {
     background-color: white;
     height: 15%;
     border: 1px solid black;
+    outline: 1rem solid lightgray;
+    margin: 0 5%;
 }
 
 .container {
     border: 2px solid black; 
-    background-color: gray;
+    background-color: black;
     height: 60%;
     width: 30%;
     display: flex;
@@ -49,6 +51,20 @@ body {
     font-weight: 500;
 }
 
-.button:hover {
+
+.button-operand {
     background-color: lightgray;
+}
+
+.button-operator {
+    background-color: darkgray;
+}
+
+#clear {
+    background-color: red;
+    color: white;
+}
+
+.button:hover, #clear:hover {
+    background-color: lightblue;
 }
