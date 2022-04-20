@@ -24,11 +24,11 @@ body {
 .container {
     border: 2px solid black; 
     background-color: gray;
-    height: 70%;
+    height: 60%;
     width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .button-container {
